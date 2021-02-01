@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,46 +9,49 @@
     tools:context=".LogIn">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginbtn"
         android:layout_width="113dp"
         android:layout_height="60dp"
         android:text="Log in"
         app:backgroundTint="#429602"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="460dp" />
+        android:layout_below="@+id/igtext"
+        android:layout_centerHorizontal="true"/>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registerbtn"
         android:layout_width="113dp"
         android:layout_height="60dp"
         android:text="Register"
         app:backgroundTint="#429602"
-        tools:layout_editor_absoluteX="181dp"
-        tools:layout_editor_absoluteY="400dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginbtn" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/guestButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Continue as guest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
         android:textColor="#429602"
         app:backgroundTint="@android:color/transparent"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="667dp" />
+        android:layout_alignParentBottom="true" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/igimage"
+        android:layout_centerHorizontal="true"
         android:layout_width="190dp"
         android:layout_height="150dp"
         app:srcCompat="@drawable/logo_image1"
-        tools:layout_editor_absoluteX="137dp"
-        tools:layout_editor_absoluteY="118dp" />
+        android:layout_marginTop="110dp"
+        android:layout_alignParentTop="true"/>
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/igtext"
         android:layout_width="313dp"
         android:layout_height="99dp"
         app:srcCompat="@drawable/igtext"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="290dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/igimage"
+        />
+</RelativeLayout>
