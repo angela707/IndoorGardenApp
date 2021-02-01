@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_2"
+    tools:context=".RegisterActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="214dp"
+        android:layout_height="151dp"
+        app:srcCompat="@drawable/logo_image1"
+        tools:layout_editor_absoluteX="98dp"
+        tools:layout_editor_absoluteY="122dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@android:color/transparent">
+
+        <EditText
+            android:id="@+id/register_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/register_last_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/register_username"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textColor="@color/black"
+            />
+        <EditText
+            android:id="@+id/register_password2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Re-enter Password"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="#429602"
+        android:text="Sign Up"/>
+
+</LinearLayout>

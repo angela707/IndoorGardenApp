@@ -1,21 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/background_2"
+
     tools:context=".LogIn">
+
+    <ImageView
+        android:id="@+id/igimage"
+        android:layout_width="190dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/logo_image1" />
+
+    <ImageView
+        android:id="@+id/igtext"
+        android:layout_width="313dp"
+        android:layout_height="99dp"
+        app:srcCompat="@drawable/igtext" />
 
     <Button
         android:id="@+id/loginbtn"
         android:layout_width="113dp"
         android:layout_height="60dp"
         android:text="Log in"
-        app:backgroundTint="#429602"
-        android:layout_below="@+id/igtext"
-        android:layout_centerHorizontal="true"/>
+        app:backgroundTint="#429602" />
 
     <Button
         android:id="@+id/registerbtn"
@@ -23,35 +36,17 @@
         android:layout_height="60dp"
         android:text="Register"
         app:backgroundTint="#429602"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/loginbtn" />
+        />
 
     <Button
         android:id="@+id/guestButton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
         android:text="Continue as guest"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
         android:textColor="#429602"
-        app:backgroundTint="@android:color/transparent"
-        android:layout_alignParentBottom="true" />
+        app:backgroundTint="@android:color/transparent" />
 
-    <ImageView
-        android:id="@+id/igimage"
-        android:layout_centerHorizontal="true"
-        android:layout_width="190dp"
-        android:layout_height="150dp"
-        app:srcCompat="@drawable/logo_image1"
-        android:layout_marginTop="110dp"
-        android:layout_alignParentTop="true"/>
 
-    <ImageView
-        android:id="@+id/igtext"
-        android:layout_width="313dp"
-        android:layout_height="99dp"
-        app:srcCompat="@drawable/igtext"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/igimage"
-        />
-</RelativeLayout>
+
+
+</LinearLayout>
