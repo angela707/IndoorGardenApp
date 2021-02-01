@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".LogIn">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="113dp"
+        android:layout_height="60dp"
+        android:text="Log in"
+        app:backgroundTint="#429602"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="460dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="113dp"
+        android:layout_height="60dp"
+        android:text="Register"
+        app:backgroundTint="#429602"
+        tools:layout_editor_absoluteX="181dp"
+        tools:layout_editor_absoluteY="400dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Continue as guest"
+        android:textColor="#429602"
+        app:backgroundTint="@android:color/transparent"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="667dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="190dp"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/logo_image1"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="118dp" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="313dp"
+        android:layout_height="99dp"
+        app:srcCompat="@drawable/igtext"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="290dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
