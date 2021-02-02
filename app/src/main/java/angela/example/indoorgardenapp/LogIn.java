@@ -37,6 +37,15 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+
+        guest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (LogIn.this, PlantsActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }
