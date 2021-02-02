@@ -39,7 +39,7 @@
         />
 
     <Button
-        android:id="@+id/guestButton"
+        android:id="@+id/guestbtn"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:text="Continue as guest"
