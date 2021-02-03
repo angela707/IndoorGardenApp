@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".WishlistActivity"></activity>
+        <activity android:name=".ShoppingCartActivity"></activity>
+        <activity android:name=".WishlistActivity" />
         <activity android:name=".PlantsActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LogInActivity" />

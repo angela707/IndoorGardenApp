@@ -55,6 +55,7 @@
             />
         <EditText
             android:id="@+id/register_password"
+            android:password="true"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -62,6 +63,7 @@
             />
         <EditText
             android:id="@+id/register_password2"
+            android:password="true"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:hint="Re-enter Password"

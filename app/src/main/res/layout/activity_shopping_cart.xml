@@ -31,7 +31,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPlants"
+        android:id="@+id/recyclerShoppingCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -42,17 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/shopping_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:backgroundTint="#429602"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:fabSize="normal"
-        android:elevation="6dp"
-        android:src="@drawable/ic_shopping_cart"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
