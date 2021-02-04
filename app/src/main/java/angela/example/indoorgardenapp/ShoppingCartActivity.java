@@ -1,11 +1,15 @@
 package angela.example.indoorgardenapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,7 +21,12 @@ public class ShoppingCartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+        Toolbar myToolbar = findViewById(R.id.myToolbar);
+        setSupportActionBar(myToolbar);
+
         myRecyclerView = findViewById(R.id.recyclerShoppingCart);
+
+
         ShoppingCartAdapter adapter = new ShoppingCartAdapter(this);
         myRecyclerView.setAdapter(adapter);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -33,4 +42,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
 }

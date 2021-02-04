@@ -66,6 +66,11 @@ public class PlantsActivity extends AppCompatActivity {
             Intent intent = new Intent (this, ContactActivity.class);
             startActivity(intent);
         }
+
+        if (id == R.id.myPlants){
+            Intent intent = new Intent (this, MyPlants.class);
+            startActivity(intent);
+        }
         return true;
 
     }

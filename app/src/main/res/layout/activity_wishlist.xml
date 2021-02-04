@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
-            app:title="IndoorGarden"
+            app:title="My Wishlist"
             android:background="#367803"
             app:titleMarginStart="30dp"
             app:titleTextColor="@color/white"

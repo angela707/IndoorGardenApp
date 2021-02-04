@@ -23,7 +23,7 @@
             android:background="#367803"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
             app:logo="@drawable/ic_grass"
-            app:title="IndoorGarden"
+            app:title="Shopping Cart"
             app:titleMarginStart="30dp"
             app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
