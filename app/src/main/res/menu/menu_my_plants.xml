@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="My Wishlist"
+        android:id="@+id/myWishlist"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_white_full_heart"
+        />
+
+    <item
+        android:title="Shopping Cart"
+        android:id="@+id/shopping_cart"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_shopping_cart"/>
+    <item
+        android:title="Contact Information"
+        android:id="@+id/contact_information"
+        app:showAsAction="never" />
+
+
+</menu>
