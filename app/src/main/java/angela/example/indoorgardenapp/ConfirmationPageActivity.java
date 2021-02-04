@@ -3,46 +3,20 @@ package angela.example.indoorgardenapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-public class PlantsActivity extends AppCompatActivity {
-
-    RecyclerView myRecyclerView;
+public class ConfirmationPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plants);
+        setContentView(R.layout.activity_confirmation_page);
         Toolbar myToolbar = findViewById(R.id.myToolbar);
         setSupportActionBar(myToolbar);
-
-        FloatingActionButton fab = findViewById(R.id.shopping_btn);
-        myRecyclerView = findViewById(R.id.recyclerPlants);
-
-        PlantsAdapter adapter = new PlantsAdapter(this);
-        myRecyclerView.setAdapter(adapter);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(PlantsActivity.this, "KLIKNA NA SHOPPING", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(PlantsActivity.this, ShoppingCartActivity.class);
-
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
@@ -69,5 +43,4 @@ public class PlantsActivity extends AppCompatActivity {
         return true;
 
     }
-
 }

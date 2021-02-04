@@ -22,7 +22,7 @@
             android:background="#367803"
             app:titleMarginStart="30dp"
             app:titleTextColor="@color/white"
-            app:logo="@drawable/ic_flower"/>
+            app:logo="@drawable/ic_grass"/>
     </com.google.android.material.appbar.AppBarLayout>
 
 

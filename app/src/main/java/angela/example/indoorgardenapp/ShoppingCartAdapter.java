@@ -34,7 +34,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 4;
     }
 
     public class ShoppingCartViewHolder extends RecyclerView.ViewHolder{

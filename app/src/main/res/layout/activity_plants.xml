@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:background="#367803"
             android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
-            app:logo="@drawable/ic_flower"
+            app:logo="@drawable/ic_grass"
             app:title="IndoorGarden"
             app:titleMarginStart="30dp"
             app:titleTextColor="@color/white" />

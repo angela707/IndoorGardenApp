@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutActivity"
+    android:background="@drawable/background_flipped">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/myToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#367803"
+            android:theme="@android:style/Theme.Holo.Light.DarkActionBar"
+            app:logo="@drawable/ic_grass"
+            app:title="IndoorGarden"
+            app:titleMarginStart="30dp"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First name:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/first_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last name:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/last_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/register_last_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone number:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/register_username"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="City:"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Country"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/register_password2"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint=""
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total:"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="XXX den."
+                android:textSize="25dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirmation_btn"
+        android:layout_width="150dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="131dp"
+        android:text="confirm"
+        app:backgroundTint="#429602"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
