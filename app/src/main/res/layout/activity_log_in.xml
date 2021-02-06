@@ -46,6 +46,16 @@
         android:textColor="#429602"
         app:backgroundTint="@android:color/transparent" />
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#429602"
+        android:foregroundTint="#429602"
+        android:progressTint="#429602"
+        android:visibility="invisible" />
+
+
 
 
 

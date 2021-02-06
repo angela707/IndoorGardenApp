@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PlantsActivity extends AppCompatActivity {
 
@@ -71,6 +72,15 @@ public class PlantsActivity extends AppCompatActivity {
             Intent intent = new Intent (this, MyPlants.class);
             startActivity(intent);
         }
+
+        if (id == R.id.log_out){
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(PlantsActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+
         return true;
 
     }

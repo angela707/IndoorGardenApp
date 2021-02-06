@@ -72,9 +72,20 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/sign_up_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:backgroundTint="#429602"
         android:text="Sign Up"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#429602"
+        android:foregroundTint="#429602"
+        android:progressTint="#429602"
+        android:visibility="invisible" />
+
 
 </LinearLayout>
