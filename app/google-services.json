@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "884745471218",
+    "project_id": "indoorgarden-abf0f",
+    "storage_bucket": "indoorgarden-abf0f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884745471218:android:f2d3702326dbecfc333c6b",
+        "android_client_info": {
+          "package_name": "angela.example.indoorgardenapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884745471218-gq1j2qi3ff3rjk7u30ot1lbkmciu6iuv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNNNG2ItvxIkwDbGtfyyqRnnkyDkXFGac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884745471218-gq1j2qi3ff3rjk7u30ot1lbkmciu6iuv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
