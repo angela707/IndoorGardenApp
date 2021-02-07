@@ -8,31 +8,45 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class PlantsActivity extends AppCompatActivity {
 
     RecyclerView myRecyclerView;
 
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference plantsRef = db.collection("Plant_Collection");
+    private PlantsAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plants);
+
         Toolbar myToolbar = findViewById(R.id.myToolbar);
         setSupportActionBar(myToolbar);
-
         FloatingActionButton fab = findViewById(R.id.shopping_btn);
-        myRecyclerView = findViewById(R.id.recyclerPlants);
 
-        PlantsAdapter adapter = new PlantsAdapter(this);
-        myRecyclerView.setAdapter(adapter);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        setUpRecyclerView();
+
+
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +58,29 @@ public class PlantsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setUpRecyclerView() {
+        myRecyclerView = findViewById(R.id.recyclerPlants);
+        Query query = plantsRef.orderBy("price", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<PlantModel> options = new FirestoreRecyclerOptions.Builder<PlantModel>().setQuery(query, PlantModel.class).build();
+        adapter = new PlantsAdapter(options, this);
+        //myRecyclerView.setHasFixedSize(true);
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        myRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     @Override
