@@ -1,5 +1,8 @@
 package angela.example.indoorgardenapp;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -20,6 +24,7 @@ import com.squareup.picasso.Picasso;
 public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAdapter.PlantsHolder> {
 
     Context context;
+    Dialog myDialog;
     public PlantsAdapter(@NonNull FirestoreRecyclerOptions<PlantModel> options, Context context) {
         super(options);
 
@@ -44,6 +49,25 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
             }
         });
 
+
+
+        holder.plant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context, "Test Click" + String.valueOf(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+               Intent intent = new Intent(context, PlantInformationActivity.class);
+//                intent.putExtra("name", model.getName());
+//                intent.putExtra("image1", model.getImage1());
+//                intent.putExtra("image2", model.getImage2());
+//                intent.putExtra("image3", model.getImage3());
+//                intent.putExtra("price", model.getPrice());
+//                intent.putExtra("description", model.getDescription());
+                intent.putExtra("plantInfo", model);
+                context.startActivity(intent);
+
+            }
+        });
+
     }
 
     @NonNull
@@ -59,6 +83,7 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
         ImageView image;
         Button shopping_cart;
         Button wishlist;
+        ConstraintLayout plant;
         public PlantsHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -68,6 +93,7 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
             image = itemView.findViewById(R.id.p_picture);
             wishlist = itemView.findViewById(R.id.fav_btn);
             shopping_cart = itemView.findViewById(R.id.cart_btn);
+            plant = itemView.findViewById(R.id.plant_info);
         }
     }
 

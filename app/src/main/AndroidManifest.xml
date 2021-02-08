@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MyPlants"></activity>
+        <activity android:name=".PlantInformationActivity"></activity>
+        <activity android:name=".MyPlants" />
         <activity android:name=".ContactActivity" />
         <activity android:name=".ConfirmationPageActivity" />
         <activity android:name=".CheckoutActivity" />

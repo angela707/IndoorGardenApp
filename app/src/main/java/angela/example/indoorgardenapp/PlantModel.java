@@ -1,6 +1,8 @@
 package angela.example.indoorgardenapp;
 
-public class PlantModel {
+import java.io.Serializable;
+
+public class PlantModel implements Serializable {
     private int amount;
     private String description;
     private String image1;
