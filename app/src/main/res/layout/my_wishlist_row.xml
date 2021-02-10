@@ -22,18 +22,20 @@
 
             <ImageView
                 android:id="@+id/p_picture"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
 
                 android:src="@drawable/logo_image1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
+                android:layout_marginEnd="5dp"
                 android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/p_picture"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -41,14 +43,19 @@
                     android:id="@+id/p_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:singleLine="false"
                     android:text="Plant Name"
+                    android:textColor="#367803"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <!--TextView
                     android:id="@+id/p_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Description" />
+                    android:text="Description" /-->
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -64,7 +71,14 @@
                         android:id="@+id/p_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:text="xxx den." />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="den." />
                 </LinearLayout>
 
 

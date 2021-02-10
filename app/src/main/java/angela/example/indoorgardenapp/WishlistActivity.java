@@ -11,9 +11,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
 public class WishlistActivity extends AppCompatActivity {
 
     RecyclerView myRecyclerView;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    private CollectionReference myWish = db.collection("Wishlist_Collection");
+    private WishlistAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +33,42 @@ public class WishlistActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
         myRecyclerView = findViewById(R.id.recyclerWishlist);
 
-        WishlistAdapter adapter = new WishlistAdapter(this);
-        myRecyclerView.setAdapter(adapter);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+       setUpWishlistAdapter();
     }
+
+    private void setUpWishlistAdapter() {
+
+        myRecyclerView = findViewById(R.id.recyclerWishlist);
+        String user_uid = " ";
+
+        if (fAuth.getCurrentUser()!= null)
+        {
+            user_uid = fAuth.getCurrentUser().getUid();
+        }
+
+
+
+        Query query = myWish.whereEqualTo("user_uid", user_uid).orderBy("user_uid");
+
+        FirestoreRecyclerOptions<WishlistModel> options = new FirestoreRecyclerOptions.Builder<WishlistModel>().setQuery(query, WishlistModel.class).build();
+        adapter = new WishlistAdapter(options, this);
+        //myRecyclerView.setHasFixedSize(true);
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        myRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

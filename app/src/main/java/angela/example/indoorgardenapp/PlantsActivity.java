@@ -48,6 +48,8 @@ public class PlantsActivity extends AppCompatActivity {
 
 
 
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +64,7 @@ public class PlantsActivity extends AppCompatActivity {
 
     private void setUpRecyclerView() {
         myRecyclerView = findViewById(R.id.recyclerPlants);
+
         Query query = plantsRef.orderBy("price", Query.Direction.DESCENDING);
 
         FirestoreRecyclerOptions<PlantModel> options = new FirestoreRecyclerOptions.Builder<PlantModel>().setQuery(query, PlantModel.class).build();

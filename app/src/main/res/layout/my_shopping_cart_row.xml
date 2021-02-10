@@ -41,14 +41,11 @@
                     android:id="@+id/p_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#367803"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:text="Plant Name"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/p_desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Description" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -63,8 +60,15 @@
                     <TextView
                         android:id="@+id/p_price"
                         android:layout_width="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:layout_height="wrap_content"
-                        android:text="xxx den." />
+                        android:text="xxxx" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="den." />
                 </LinearLayout>
 
 

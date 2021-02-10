@@ -9,8 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LogIn extends AppCompatActivity {
     Button login, register, guest;
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +22,15 @@ public class LogIn extends AppCompatActivity {
 
         login = findViewById(R.id.loginbtn);
         register = findViewById(R.id.registerbtn);
-        guest = findViewById(R.id.guestbtn);
+
+
+
+        if (fAuth.getCurrentUser() != null) {
+            Intent intent = new Intent(LogIn.this, PlantsActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +49,7 @@ public class LogIn extends AppCompatActivity {
         });
 
 
-        guest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (LogIn.this, PlantsActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 

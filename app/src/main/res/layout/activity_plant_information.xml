@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,16 +20,16 @@
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="400dp"
-            app:sliderScrollTimeInSec="2"
-            app:sliderStartAutoCycle="true"
+            app:sliderAnimationDuration="1000"
             app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorOrientation="horizontal"
             app:sliderIndicatorPadding="4dp"
             app:sliderIndicatorRadius="1.5dp"
             app:sliderIndicatorSelectedColor="#367803"
             app:sliderIndicatorUnselectedColor="#FFFFFF"
-            app:sliderAnimationDuration="1000"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorGravity="center_horizontal|bottom"/>
+            app:sliderScrollTimeInSec="2"
+            app:sliderStartAutoCycle="true" />
 
         <TextView
             android:id="@+id/pname"
@@ -74,6 +75,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
