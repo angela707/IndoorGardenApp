@@ -74,7 +74,7 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<WishlistModel, Wis
         holder.cart_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
