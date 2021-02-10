@@ -73,7 +73,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/register_last_name"
+            android:id="@+id/register_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint=""
@@ -86,7 +86,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/register_email"
+            android:id="@+id/register_number"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint=""
@@ -99,7 +99,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/register_username"
+            android:id="@+id/register_address"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint=""
@@ -112,7 +112,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/register_password"
+            android:id="@+id/register_city"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint=""
@@ -125,7 +125,7 @@
             android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/register_password2"
+            android:id="@+id/register_country"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:hint=""
@@ -144,11 +144,19 @@
                 android:textSize="25dp" />
 
             <TextView
+                android:id="@+id/register_amount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="XXX den."
+                android:text="XXXX"
                 android:textSize="25dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="den."
+                android:textSize="25dp"
+                />
 
         </LinearLayout>
     </LinearLayout>

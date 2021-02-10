@@ -34,12 +34,14 @@ public class ShoppingCartAdapter extends FirestoreRecyclerAdapter<ShoppingCartMo
     FirebaseFirestore fs = FirebaseFirestore.getInstance();
     String user_uid  = fAuth.getCurrentUser().getUid();
     String current_uid;
-    private static final String TAG = "ShoppingCartAdapter";
 
+    private static final String TAG = "ShoppingCartAdapter";
     Context context;
-    public ShoppingCartAdapter(@NonNull FirestoreRecyclerOptions<ShoppingCartModel> options, Context context) {
+    ShoppingCartActivity activity;
+    public ShoppingCartAdapter(@NonNull FirestoreRecyclerOptions<ShoppingCartModel> options, Context context ) {
         super(options);
         this.context = context;
+        this.activity = (ShoppingCartActivity) context;
     }
 
     @Override
@@ -86,6 +88,21 @@ public class ShoppingCartAdapter extends FirestoreRecyclerAdapter<ShoppingCartMo
                             doc.update("amount", FieldValue.increment(1)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+                                    fs.collection("User_Collection").document(fAuth.getCurrentUser().getUid())
+                                            .update("current_total", FieldValue.increment(plant.getPrice())).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            //Toast.makeText(context, "Updated in user!", Toast.LENGTH_SHORT).show();
+                                            activity.reloadActivity();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(context, "Couldn't add to user", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
                                     Log.d(TAG, "DocumentSnapshot successfully updated!");
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -127,6 +144,20 @@ public class ShoppingCartAdapter extends FirestoreRecyclerAdapter<ShoppingCartMo
                             doc.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+
+                                    fs.collection("User_Collection").document(fAuth.getCurrentUser().getUid())
+                                            .update("current_total", FieldValue.increment(-( plant.getPrice()))).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            //Toast.makeText(context, "Updated in user!", Toast.LENGTH_SHORT).show();
+                                            activity.reloadActivity();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(context, "Couldn't add to user", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     Log.w(TAG, "Document successfully deleted");
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
@@ -140,7 +171,21 @@ public class ShoppingCartAdapter extends FirestoreRecyclerAdapter<ShoppingCartMo
                             doc.update("amount", FieldValue.increment(-1)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+                                    fs.collection("User_Collection").document(fAuth.getCurrentUser().getUid())
+                                            .update("current_total", FieldValue.increment(-( plant.getPrice()))).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            //Toast.makeText(context, "Updated in user!", Toast.LENGTH_SHORT).show();
+                                            activity.reloadActivity();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(context, "Couldn't add to user", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                                     Log.d(TAG, "DocumentSnapshot successfully updated!");
+                                    activity.reloadActivity();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

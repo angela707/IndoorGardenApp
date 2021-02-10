@@ -11,7 +11,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MyPlants extends AppCompatActivity {
+
+
+    // za vtor kolokvium da se nadgradi so notifikacii
     RecyclerView myRecyclerView;
 
     @Override
@@ -53,6 +58,14 @@ public class MyPlants extends AppCompatActivity {
         if (id == R.id.shopping_cart){
             Intent intent = new Intent (this, ShoppingCartActivity.class);
             startActivity(intent);
+        }
+
+        if (id == R.id.log_out){
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(MyPlants.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
         }
         return true;
 

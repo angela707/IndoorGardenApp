@@ -108,10 +108,10 @@ public class PlantsActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        if (id == R.id.myPlants){
+       /* if (id == R.id.myPlants){
             Intent intent = new Intent (this, MyPlants.class);
             startActivity(intent);
-        }
+        }*/
 
         if (id == R.id.log_out){
             FirebaseAuth.getInstance().signOut();

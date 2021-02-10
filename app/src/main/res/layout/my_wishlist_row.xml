@@ -98,12 +98,12 @@
                     android:background="@drawable/ic_full_green_heart"
                     app:backgroundTint="#429602" />
 
-                <Button
+                <!--Button
                     android:id="@+id/cart_btn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/ic_add_shopping_cart"
-                    app:backgroundTint="#429602" />
+                    app:backgroundTint="#429602" /-->
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

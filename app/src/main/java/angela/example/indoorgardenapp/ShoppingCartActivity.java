@@ -37,6 +37,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     PlantModel plant;
     private int price;
 
+
     RecyclerView myRecyclerView;
     Button checkout;
     TextView total_price;
@@ -55,12 +56,13 @@ public class ShoppingCartActivity extends AppCompatActivity {
         setUpRecyclerView();
 
         checkout = findViewById(R.id.checkout_btn);
-        total_price = findViewById(R.id.total_price);
+
 
 
         checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent (ShoppingCartActivity.this, CheckoutActivity.class);
                 startActivity(intent);
             }
@@ -78,10 +80,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
         calculateFullPrice();
 
         //total_price.setText(String.valueOf(price));
-
-
-
-
 
 
     }
@@ -116,51 +114,26 @@ public class ShoppingCartActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 
-    private void calculateFullPrice() {
-        String user_uid = " ";
+    private void calculateFullPrice(){
 
-        if (fAuth.getCurrentUser()!= null)
-            user_uid = fAuth.getCurrentUser().getUid();
-
-        cartRef.whereEqualTo("user_uid", user_uid ).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("User_Collection").document(fAuth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                List<DocumentSnapshot> snapshotList = queryDocumentSnapshots.getDocuments();
-                List <ShoppingCartModel> lista = null;
-                for (DocumentSnapshot snapshot : snapshotList){
-                    ShoppingCartModel item = snapshot.toObject(ShoppingCartModel.class);
-
-                    db.collection("Plant_Collection").document(item.getPlant_uid())
-                            .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            PlantModel plant = documentSnapshot.toObject(PlantModel.class);
-
-                            price = price + (item.getAmount() * plant.getPrice());
-                            TextView cena = findViewById(R.id.total_price);
-                            cena.setText(String.valueOf(price));
-
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.e(TAG, "Failure getting plant!: ", e);
-                        }
-                    });
-                }
-
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                UserProfile user = documentSnapshot.toObject(UserProfile.class);
+                total_price = findViewById(R.id.total_price);
+                total_price.setText(String.valueOf(user.getCurrent_total()));
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "onFailure: ", e);
+                Log.e(TAG, "Couldn't get user: ", e);
             }
         });
-
-        //total_price.setText(String.valueOf(price));
-
     }
 
 
+    public void reloadActivity(){
+        recreate();
+    }
 }

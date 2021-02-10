@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
@@ -50,6 +51,11 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<WishlistModel, Wis
 
         PlantModel myPlant;
         DocumentReference doc = fs.collection("Plant_Collection").document(model.getPlant_uid());
+
+        
+
+
+
         doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -67,20 +73,39 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<WishlistModel, Wis
             @Override
             public void onClick(View v) {
 
+                DocumentReference doc = fs.collection("Plant_Collection").document(model.getPlant_uid());
+                doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        PlantModel plant = documentSnapshot.toObject(PlantModel.class);
 
+
+                        String current_uid = model.getUser_uid() + plant.getName();
+
+
+                        DocumentReference doc = fs.collection("Wishlist_Collection").document(current_uid);
+                        // delete from shopping cart
+                        doc.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(context, "Removed from Wishlist!", Toast.LENGTH_SHORT).show();
+                                Log.w(TAG, "Document successfully deleted");
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error deleting document", e);
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error accessing document", e);
+                    }
+                });
             }
         });
-
-        holder.cart_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-
-
-
 
 
     }
@@ -95,7 +120,7 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<WishlistModel, Wis
     public class WishlistHolder extends RecyclerView.ViewHolder {
         TextView name, price; //,description;
         ImageView img;
-        Button fav_btn, cart_btn;
+        Button fav_btn;// cart_btn;
 
         public WishlistHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,7 +130,7 @@ public class WishlistAdapter extends FirestoreRecyclerAdapter<WishlistModel, Wis
             price = itemView.findViewById(R.id.p_price);
             img = itemView.findViewById(R.id.p_picture);
             fav_btn = itemView.findViewById(R.id.fav_btn);
-            cart_btn = itemView.findViewById(R.id.cart_btn);
+            //cart_btn = itemView.findViewById(R.id.cart_btn);
 
         }
     }

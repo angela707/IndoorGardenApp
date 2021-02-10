@@ -35,7 +35,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
 public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAdapter.PlantsHolder> {
-
+    FirebaseAuth fAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore fs = FirebaseFirestore.getInstance();
     Context context;
     private static final String TAG = "PlantsAdapter";
 
@@ -48,8 +49,7 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
 
     @Override
     protected void onBindViewHolder(@NonNull PlantsHolder holder, int position, @NonNull PlantModel model) {
-        FirebaseAuth fAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore fs = FirebaseFirestore.getInstance();
+
         holder.name.setText(model.getName());
         holder.description.setText(model.getDescription());
         holder.price.setText(String.valueOf(model.getPrice()));
@@ -69,9 +69,24 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
         CollectionReference wishRef = fs.collection("Wishlist_Collection");
 
 
-        //check if plant is in wishlist
+        if (model.getAmount()==0)
+        {
+            holder.shopping_cart.setEnabled(false);
+        }
 
 
+
+        //check if it exists in wishlist
+        String item = user_uid + model.getName();
+        wishRef.document(item).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists())
+                {
+                    holder.wishlist.setBackgroundResource(R.drawable.ic_full_green_heart);
+                }
+            }
+        });
 
 
         // add to wishlist
@@ -117,7 +132,6 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
         holder.shopping_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String user_uid = " ";
                 if (fAuth.getCurrentUser()!= null) {
                     user_uid = fAuth.getCurrentUser().getUid();
@@ -138,6 +152,21 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
                             ref.update("amount", FieldValue.increment(1)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
+
+                                    fs.collection("User_Collection").document(fAuth.getCurrentUser().getUid())
+                                            .update("current_total", FieldValue.increment(model.getPrice())).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(context, "Updated in user!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(context, "Couldn't add to user", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
                                     Toast.makeText(context, "Updated Shopping Cart!", Toast.LENGTH_SHORT).show();
                                     Log.d(TAG, "Updated Shopping Cart!");
                                 }
@@ -161,6 +190,21 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
+
+                                        fs.collection("User_Collection").document(fAuth.getCurrentUser().getUid())
+                                                .update("current_total", FieldValue.increment(model.getPrice())).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                Log.d(TAG, "Updated in user!");
+                                                //Toast.makeText(context, "Updated in user!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.e(TAG, "Couldn't add to user: ", e);
+                                                //Toast.makeText(context, "Couldn't add to user", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                         Toast.makeText(context, "Added to Shopping Cart", Toast.LENGTH_SHORT).show();
                                     }else{
                                         Toast.makeText(context, "Error adding to Shopping Cart!", Toast.LENGTH_SHORT).show();
@@ -187,7 +231,11 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
             @Override
             public void onClick(View v) {
                 //Toast.makeText(context, "Test Click" + String.valueOf(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
-               Intent intent = new Intent(context, PlantInformationActivity.class);
+                DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
+                String plant_uid = snapshot.getId();
+
+                Intent intent = new Intent(context, PlantInformationActivity.class);
+                intent.putExtra("plant_uid", plant_uid);
                 intent.putExtra("plantInfo", model);
                 context.startActivity(intent);
 

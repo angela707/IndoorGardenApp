@@ -40,15 +40,13 @@ public class WishlistActivity extends AppCompatActivity {
 
         myRecyclerView = findViewById(R.id.recyclerWishlist);
         String user_uid = " ";
-
         if (fAuth.getCurrentUser()!= null)
         {
             user_uid = fAuth.getCurrentUser().getUid();
         }
 
 
-
-        Query query = myWish.whereEqualTo("user_uid", user_uid).orderBy("user_uid");
+        Query query = myWish.whereEqualTo("user_uid", user_uid);
 
         FirestoreRecyclerOptions<WishlistModel> options = new FirestoreRecyclerOptions.Builder<WishlistModel>().setQuery(query, WishlistModel.class).build();
         adapter = new WishlistAdapter(options, this);
@@ -92,9 +90,16 @@ public class WishlistActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        if (id == R.id.myPlants){
+        /*if (id == R.id.myPlants){
             Intent intent = new Intent (this, MyPlants.class);
             startActivity(intent);
+        }*/
+        if (id == R.id.log_out){
+            FirebaseAuth.getInstance().signOut();
+            Intent intent = new Intent(WishlistActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+
         }
         return true;
 

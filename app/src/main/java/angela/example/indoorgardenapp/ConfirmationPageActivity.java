@@ -8,15 +8,49 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class ConfirmationPageActivity extends AppCompatActivity {
 
+    TextView order_num;
+    Button plants;
+    String order_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_page);
         Toolbar myToolbar = findViewById(R.id.myToolbar);
         setSupportActionBar(myToolbar);
+
+        order_num = findViewById(R.id.order_num);
+
+        getData();
+        setData();
+
+
+        plants = findViewById(R.id.plans_btn);
+
+        plants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConfirmationPageActivity.this, PlantsActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setData() {
+        order_num.setText(order_id);
+    }
+
+    private void getData() {
+        Intent intent = getIntent();
+        if(intent.hasExtra("order_id")){
+            order_id = intent.getStringExtra("order_id");
+
+        }
     }
 
     @Override
@@ -41,10 +75,10 @@ public class ConfirmationPageActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        if (id == R.id.myPlants){
+        /*if (id == R.id.myPlants){
             Intent intent = new Intent (this, MyPlants.class);
             startActivity(intent);
-        }
+        }*/
         return true;
 
     }

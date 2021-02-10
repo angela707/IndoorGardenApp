@@ -64,22 +64,27 @@
             android:layout_height="99dp"
             app:srcCompat="@drawable/igtext" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="Order number:"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:text="######"/>
+            android:textSize="30sp"
+            android:text="Order number:"/>
+        <TextView
+            android:id="@+id/order_num"
+            android:layout_width="300dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:text="######"/>
 
-        </LinearLayout>
+        <Button
+            android:id="@+id/plans_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Back to plants"
+            app:backgroundTint="#429602"
+            />
 
     </LinearLayout>
 

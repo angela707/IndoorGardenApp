@@ -122,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     updateUserInfo(task);
                 } else {
-                    Toast.makeText(RegisterActivity.this, "ERROR!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "User already exists!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -161,7 +161,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         String uid = task.getResult().getUser().getUid();
 
-        UserProfile user = new UserProfile (uid, nameInput, lastNameInput, emailInput, usernameInput, passwordInput);
+        UserProfile user = new UserProfile (uid, nameInput, lastNameInput, emailInput, usernameInput, passwordInput, 0, 0);
 
         users.document(uid).set(user).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
