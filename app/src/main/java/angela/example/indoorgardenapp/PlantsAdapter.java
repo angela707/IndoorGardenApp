@@ -55,7 +55,7 @@ public class PlantsAdapter extends FirestoreRecyclerAdapter<PlantModel, PlantsAd
         holder.price.setText(String.valueOf(model.getPrice()));
 
         Uri picUrl = Uri.parse(model.getImage1());
-        Picasso.get().load(picUrl).resize(500, 500).noFade().into(holder.image);
+        Picasso.get().load(picUrl).resize(1000, 1000).noFade().into(holder.image);
 
         String user_uid = " ";
 
