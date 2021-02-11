@@ -11,9 +11,6 @@ We're aiming to improve our app to help you keep track of the needs of the plant
 # Installation Guide
 To install this application simply download the APK file to your phone. After downloading the application on your phone install it by going to your File Manager and clicking on the file name. 
 
-# Usage
-Once you've installed the app to your it's time to launch it. If you already have an account, go ahead and log in, but if you're using this app for the first time, you need to register. After successfully loging in, you can begin shopping. The app keeps you logged in, untill you decide to log out.
-Thank you for using IndoorGarden! :)
 
 # Contents
 1. LogIn or Register Page
@@ -25,4 +22,9 @@ Thank you for using IndoorGarden! :)
 7. Contact Information
 8. Check Out
 9. Confirmation Page
+
+# Usage
+Once you've installed the app to your it's time to launch it. If you already have an account, go ahead and log in, but if you're using this app for the first time, you need to register. After successfully loging in, you can begin shopping. The app keeps you logged in, untill you decide to log out. In the Indoor Garden Plants page, you can either add the plants to your wishlist or your shopping cart. If you wish to see more images, just click anywhere on the plant. In your Wishlist page you can review all the plants you've added, and remove some if you wish. When you go to your shopping cart you will be presented with all the plants you've added, and you can increase or decrease the number of plants you want to purchase. Your total is at the bottom. Once you're ready, proceed to checkout where you'll enter all the information needed for delivery. Please enter all fields or the order won't be placed. After you confirm your order the order number will be presented to you. You can go back to plants from that page or go to your wishlist. If you wish to contact us, all the information is presented in our Contact Information page. If you wish to be navigated to our store, click on the map image. For any questions feel free to call our number or contact us by email.
+Thank you for using IndoorGarden! :)
+
 
